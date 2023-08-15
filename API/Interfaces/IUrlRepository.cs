@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Entities;
 
 namespace API.Interfaces;
 
-public interface IUnitOfWork
+public interface IUrlRepository
 {
-    IUrlRepository UrlRepository { get; }
-    Task<bool> Complete();
-    bool HasChanges();
+    Task<Url> GetUrlByTextAsync(string text);
 }
