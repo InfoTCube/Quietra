@@ -478,3 +478,5 @@ $RECYCLE.BIN/
 
 appsettings.json
 Quietra.db
+Quietra.db-shm
+Quietra.db-wal
