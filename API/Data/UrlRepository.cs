@@ -23,4 +23,33 @@ public class UrlRepository : IUrlRepository
     {
         return await _context.Urls.Where(url => url.Text == text).FirstOrDefaultAsync();
     }
+
+    public async Task AddUrlAsync(Url url)
+    {
+        await _context.Urls.AddAsync(url);
+    }
+
+    public async Task<string> GenerateUniqueText(string target)
+    {
+
+        Url existingUrl = _context.Urls.Where(url => url.Target == target).FirstOrDefault();
+        if(existingUrl != null) return existingUrl.Text;
+
+        string text = string.Empty;
+        do
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[6];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            text = new String(stringChars);
+        } while(_context.Urls.Where(url => url.Text == text) == null);
+
+        return text;
+    }
 }

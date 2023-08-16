@@ -18,6 +18,7 @@ public class UnitOfWork : IUnitOfWork
     }
     
     public IUrlRepository UrlRepository => new UrlRepository(_context, _mapper);
+    public IUserRepository UserRepository => new UserRepository(_context);
 
     public async Task<bool> Complete()
     {

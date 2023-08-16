@@ -12,5 +12,6 @@ public class AutoMapperProfiles : Profile
     public AutoMapperProfiles()
     {
         CreateMap<RegisterDto, AppUser>();
+        CreateMap<Url, UrlDto>();
     }
 }
