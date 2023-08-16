@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
@@ -31,10 +27,6 @@ public class UrlRepository : IUrlRepository
 
     public async Task<string> GenerateUniqueText(string target)
     {
-
-        Url existingUrl = _context.Urls.Where(url => url.Target == target).FirstOrDefault();
-        if(existingUrl != null) return existingUrl.Text;
-
         string text = string.Empty;
         do
         {
