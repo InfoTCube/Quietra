@@ -21,7 +21,7 @@ public class UrlController : BaseApiController
         _unitOfWork = unitOfWork;
     }
 
-    [HttpGet("{text}")]
+    [HttpPost("{text}")]
     public async Task<ActionResult<string>> GetTarget([FromRoute]string text, [FromBody]UrlViewDto urlViewDto)
     {
         Url url = await _unitOfWork.UrlRepository.GetUrlByTextAsync(text);
